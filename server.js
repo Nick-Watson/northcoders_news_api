@@ -1,12 +1,12 @@
 if (!process.env.NODE_ENV) process.env.NODE_ENV = 'dev';
 
-var express = require('express');
-var mongoose = require('mongoose');
-var bodyParser = require('body-parser');
-var app = express();
-var config = require('./config');
-var db = config.DB[process.env.NODE_ENV] || process.env.DB;
-var PORT = config.PORT[process.env.NODE_ENV] || process.env.PORT;
+const express = require('express');
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const app = express();
+const config = require('./config');
+const db = config.DB[process.env.NODE_ENV] || process.env.DB;
+const PORT = config.PORT[process.env.NODE_ENV] || process.env.PORT;
 const apiRouter = require('./routes/api')
 
 mongoose.connect(db, function (err) {
@@ -28,4 +28,18 @@ app.use('/*', function (req, res) {
 app.listen(PORT, function () {
   console.log(`listening on port ${PORT}`);
 });
+
+app.use(function (error, req, res, next) {
+    if (error.name === 'CastError') {
+        return res.status(400).send({
+            reason: `INVALID PATH, ${error.value} NOT FOUND`,
+            stack_trace: error
+        })
+    }
+    return next(error);
+});
+
+app.use(function (error, req, res, next) {
+    return res.status(500).send({error: error});
+})
 

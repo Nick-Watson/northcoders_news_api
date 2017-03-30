@@ -5,7 +5,7 @@ function getAllCommentsForArticle (req, res) {
 
     commentsModel.find({belongs_to:articleId}, function (error, comments) {
         if (error) {
-            return res.status(500).send({error: error});
+            return res.status(400).send({INVALID_PATH: error});
         }
         res.status(200).send({comments: comments});
     });   
