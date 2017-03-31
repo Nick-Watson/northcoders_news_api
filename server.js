@@ -2,6 +2,7 @@ if (!process.env.NODE_ENV) process.env.NODE_ENV = 'dev';
 
 const express = require('express');
 const mongoose = require('mongoose');
+mongoose.Promise = global.Promise;
 const bodyParser = require('body-parser');
 const app = express();
 const config = require('./config');

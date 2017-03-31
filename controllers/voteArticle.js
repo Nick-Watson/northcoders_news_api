@@ -1,12 +1,12 @@
 const articlesModel = require('../models/articles')
 
-function voteArticle(req, res) {
+function voteArticle(req, res, next) {
     const articleId = req.params.article_id
     const query = queryBuilder(req.query)
 
-    articlesModel.findOneAndUpdate({ _id: articleId }, query, function (error, article) {
+    articlesModel.findOneAndUpdate({ _id: articleId }, query, function (error) {
         if (error) {
-            return res.status(500).send({ error: error });
+            return next(error)
         }
         res.status(200).send({ STATUS: 'SUCCESS' });
     });

@@ -1,14 +1,32 @@
 const articlesModel = require('../models/articles')
+const commentsModel = require('../models/comments');
+const async = require('async');
 
-function getAllTopicArticles (req, res) {
+function getAllTopicArticles (req, res, next) {
     const topicId = req.params.topic_id;
 
     articlesModel.find({belongs_to: topicId}, function (error, articles) {
         if (error) {
-            return res.status(500).send({error: error});
+            return next(error)
         }
-        res.status(200).send({articles: articles});
+        async.mapSeries(articles, countArticleComments, function (error, result) {
+            if (error) {
+                next(error)
+            }
+            res.status(200).send({articles: result})
+        })        
     });   
 }
 
-module.exports = getAllTopicArticles
+function countArticleComments (article, done) {
+            commentsModel.find({belongs_to: article._id}, function (error, comments) {
+                if (error) {
+                    return done(error);
+                }
+                article = article.toObject();
+                article.comment_count = comments.length;
+                done(null, article);
+            })
+        }
+        
+module.exports = getAllTopicArticles;

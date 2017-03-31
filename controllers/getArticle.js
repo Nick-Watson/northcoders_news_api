@@ -6,7 +6,7 @@ function getArticle (req, res, next) {
   async.waterfall([
     function (next) {
         const articleId = req.params.article_id;
-        articlesModel.find({_id: articleId}, function (error, article) {
+        articlesModel.findById(articleId, function (error, article) {
             if (error) {
                 return next(error);
             }
@@ -26,12 +26,11 @@ function getArticle (req, res, next) {
     }
   ], function (error, result) {
         if (error) {
-            next(error)
+            return next(error)
         }
-
-    res.status(200).send({article: result})
+        res.status(200).send({article: result})
   })
- };
+ }
 
 
 

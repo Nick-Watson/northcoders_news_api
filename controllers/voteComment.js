@@ -1,12 +1,12 @@
 const commentsModel = require('../models/comments')
 
-function voteComment(req, res) {
+function voteComment(req, res, next) {
     const commentId = req.params.comment_id
     const query = queryBuilder(req.query)
 
-    commentsModel.findOneAndUpdate({ _id: commentId }, query, function (error, comment) {
+    commentsModel.findOneAndUpdate({ _id: commentId }, query, function (error) {
         if (error) {
-            return res.status(500).send({ error: error });
+            return next(error)
         }
         res.status(200).send({ STATUS: 'SUCCESS' });
     });
@@ -23,7 +23,6 @@ function queryBuilder(urlQuery) {
                 query = {$inc:{ votes: -1 }};
             }
         }
-
     }
     return query;
 }

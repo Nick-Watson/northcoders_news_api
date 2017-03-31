@@ -1,6 +1,6 @@
 const commentsModel = require('../models/comments')
 
-function postCommentForArticle(req, res) {
+function postCommentForArticle(req, res, next) {
 
     const articleId = req.params.article_id;
     const commentBody = req.body.comment
@@ -8,7 +8,7 @@ function postCommentForArticle(req, res) {
 
     comment.save(function (error, comment) {
         if (error) {
-            return res.status(400).send({error: error});            
+            return next(error)
         }
         res.status(201).send({ comment: comment });
     })
