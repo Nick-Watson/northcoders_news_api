@@ -1,5 +1,4 @@
 if (!process.env.NODE_ENV) process.env.NODE_ENV = 'dev';
-
 const express = require('express');
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
@@ -8,7 +7,7 @@ const app = express();
 const config = require('./config');
 const db = config.DB[process.env.NODE_ENV] || process.env.DB;
 const PORT = config.PORT[process.env.NODE_ENV] || process.env.PORT;
-const apiRouter = require('./routes/api')
+const apiRouter = require('./routes/api');
 
 mongoose.connect(db, function (err) {
   if (!err) {
@@ -19,12 +18,12 @@ mongoose.connect(db, function (err) {
 });
 
 app.use(bodyParser.json());
+
 app.use('/api', apiRouter);
 
 app.use('/*', function (req, res) {
-    res.status(404).send({reason: 'ROUTE NOT FOUND'})
-})
-
+    res.status(404).send({reason: 'ROUTE NOT FOUND'});
+});
 
 app.listen(PORT, function () {
   console.log(`listening on port ${PORT}`);
@@ -35,12 +34,12 @@ app.use(function (error, req, res, next) {
         return res.status(400).send({
             reason: `INVALID PATH, ${error.value} NOT FOUND`,
             stack_trace: error
-        })
+        });
     }
     return next(error);
 });
 
-app.use(function (error, req, res, next) {
+app.use(function (error, req, res) {
     return res.status(500).send({error: error});
-})
+});
 

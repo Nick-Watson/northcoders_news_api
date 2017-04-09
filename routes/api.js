@@ -1,17 +1,16 @@
 const express = require('express');
-const mongoose = require('mongoose');
 const router = express.Router();
-const getAllTopics = require('../controllers/getAllTopics')
-const getAllTopicArticles = require('../controllers/getAllTopicArticles')
-const getAllArticles = require('../controllers/getAllArticles')
-const getAllCommentsForArticle = require('../controllers/getAllCommentsForArticle')
-const postCommentForArticle = require('../controllers/postCommentForArticle')
-const voteArticle = require('../controllers/voteArticle')
-const getArticle = require('../controllers/getArticle')
-const getComment= require('../controllers/getComment')
-const voteComment = require('../controllers/voteComment')
-const deleteComment = require('../controllers/deleteComment')
-const getUserProfile = require('../controllers/getUserProfile')
+const getAllTopics = require('../controllers/getAllTopics');
+const getAllTopicArticles = require('../controllers/getAllTopicArticles');
+const getAllArticles = require('../controllers/getAllArticles');
+const getAllCommentsForArticle = require('../controllers/getAllCommentsForArticle');
+const postCommentForArticle = require('../controllers/postCommentForArticle');
+const voteArticle = require('../controllers/voteArticle');
+const getArticle = require('../controllers/getArticle');
+const getComment = require('../controllers/getComment');
+const voteComment = require('../controllers/voteComment');
+const deleteComment = require('../controllers/deleteComment');
+const getUserProfile = require('../controllers/getUserProfile');
 
 
 router.route('/').get(function (req, res) {
@@ -34,6 +33,6 @@ router.route('/articles/:article_id').put(voteArticle);
 
 router.route('/comments/:comment_id').put(voteComment).delete(deleteComment);
 
-router.route('/users/:username').get(getUserProfile)
+router.route('/users/:username').get(getUserProfile);
 
-module.exports = router
+module.exports = router;

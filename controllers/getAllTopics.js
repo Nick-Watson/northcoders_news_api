@@ -1,12 +1,12 @@
-const topicsModel = require('../models/topics')
+const topicsModel = require('../models/topics');
 
 function getAllTopics (req, res, next) {
     topicsModel.find({}, function (error, topics) {
         if (error) {
-            return next(error)
+            return next(error);
         }
         res.status(200).send({topics: topics});
     });   
 }
 
-module.exports = getAllTopics
+module.exports = getAllTopics;

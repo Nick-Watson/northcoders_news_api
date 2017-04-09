@@ -1,4 +1,4 @@
-const articlesModel = require('../models/articles')
+const articlesModel = require('../models/articles');
 const commentsModel = require('../models/comments');
 const async = require('async');
 
@@ -10,9 +10,8 @@ function getArticle (req, res, next) {
             if (error) {
                 return next(error);
             }
-            console.log(article)
-            next(null, article[0])
-        })
+            next(null, article);
+        });
     },
     function (article, done) {
         commentsModel.find({belongs_to: article._id}, function (error, comments) {
@@ -22,17 +21,18 @@ function getArticle (req, res, next) {
             article = article.toObject();
             article.comment_count = comments.length;
             done(null, article);
-        })        
+        });        
     }
   ], function (error, result) {
         if (error) {
-            return next(error)
+            return next(error);
         }
-        res.status(200).send({article: result})
-  })
+        res.status(200).send({article: result});
+  });
  }
 
 
+module.exports = getArticle;
 
-
-module.exports = getArticle
+// incorrectId gives 500 internal server error. message 'no such article found'
+// invalidId gives 500 internal server error. message Invalid ID

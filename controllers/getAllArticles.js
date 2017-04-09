@@ -1,4 +1,4 @@
-const articlesModel = require('../models/articles')
+const articlesModel = require('../models/articles');
 const commentsModel = require('../models/comments');
 const async = require('async');
 
@@ -6,14 +6,14 @@ const async = require('async');
 function getAllArticles (req, res, next) {
     articlesModel.find({}, function (error, articles) {
         if (error) {
-            return next(error)
+            return next(error);
         }
         async.mapSeries(articles, countArticleComments, function (error, result) {
             if (error) {
-                next(error)
+                next(error);
             }
-            res.status(200).send({articles: result})
-        })
+            res.status(200).send({articles: result});
+        });
     });   
 }
 
@@ -25,7 +25,7 @@ function countArticleComments (article, done) {
                 article = article.toObject();
                 article.comment_count = comments.length;
                 done(null, article);
-            })
+            });
         }
 
-module.exports = getAllArticles
+module.exports = getAllArticles;

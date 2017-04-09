@@ -1,4 +1,4 @@
-const usersModel = require('../models/users')
+const usersModel = require('../models/users');
 
 function getUserProfile (req, res, next) {
     const userName = req.params.username;
@@ -11,4 +11,4 @@ function getUserProfile (req, res, next) {
     });   
 }
 
-module.exports = getUserProfile
+module.exports = getUserProfile;

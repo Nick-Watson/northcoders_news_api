@@ -30,7 +30,7 @@ function saveTopics (cb) {
   models.Topics.create(topics, (err) => {
     if (err) cb(err);
     else cb();
-  })
+  });
 }
 
 function saveArticles (cb) {
@@ -46,7 +46,7 @@ function saveComments (articlesArray, cb) {
   const comment2 = new models.Comments({body: 'this is another comment', belongs_to: articleId, created_by: 'someone'});
   models.Comments.create([comment, comment2], err => {
     if (err) cb(err);
-    else cb(null, {article_id: articleId, comment_id: comment._id, non_northcoder_comment: comment2._id });
+    else cb(null, {article_id: articleId, comment_id: comment._id, non_northcoder_comment: comment2._id});
   });
 }
 
@@ -54,7 +54,7 @@ function saveTestData (cb) {
   async.waterfall([saveUser, saveTopics, saveArticles, saveComments], (err, ids) => {
     if (err) console.log(err);
     else {
-      console.log('Test data seeded successfully.');
+      console.log('Test data seeded successfully.', ids);
       cb(ids);
     }
   });
