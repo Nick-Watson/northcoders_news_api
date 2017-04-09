@@ -5,7 +5,7 @@ mongoose.Promise = global.Promise;
 const bodyParser = require('body-parser');
 const app = express();
 const config = require('./config');
-const db = config.DB[process.env.NODE_ENV] || process.env.DB;
+const db = 'mongodb://nwat24:warrior2488@ds135830.mlab.com:35830/northcoders_news_api';
 const PORT = config.PORT[process.env.NODE_ENV] || process.env.PORT;
 const apiRouter = require('./routes/api');
 
