@@ -5,7 +5,7 @@ mongoose.Promise = global.Promise;
 const bodyParser = require('body-parser');
 const app = express();
 const config = require('./config');
-const db = 'mongodb://nwat24:warrior2488@ds135830.mlab.com:35830/northcoders_news_api';
+const db = config.DB[process.env.NODE_ENV] || process.env.DB;
 const PORT = config.PORT[process.env.NODE_ENV] || process.env.PORT;
 const apiRouter = require('./routes/api');
 
@@ -18,13 +18,6 @@ mongoose.connect(db, function (err) {
 });
 
 app.use(bodyParser.json());
-
-app.all('*', function (req, res, next) {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'Content-Type');
-  next();
-});
 
 app.use('/api', apiRouter);
 

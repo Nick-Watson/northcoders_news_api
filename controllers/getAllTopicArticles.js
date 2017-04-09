@@ -24,7 +24,7 @@ function countArticleComments (article, done) {
                     return done(error);
                 }
                 article = article.toObject();
-                article.comment_count = comments.length;
+                article.comments = comments.length;
                 done(null, article);
             });
         }
