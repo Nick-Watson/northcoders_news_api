@@ -4,11 +4,11 @@ function voteArticle (req, res, next) {
     const articleId = req.params.article_id;
     const query = queryBuilder(req.query);
 
-    articlesModel.findOneAndUpdate({_id: articleId}, query, function (error) {
+    articlesModel.findOneAndUpdate({_id: articleId}, query, function (error, result) {
         if (error) {
             return next(error);
         }
-        res.status(200).send({STATUS: 'SUCCESS'});
+        res.status(200).send(result);
     });
 }
 
