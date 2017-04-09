@@ -202,7 +202,7 @@ describe('API ROUTES', () => {
                 .end((error, response) => {
                     if (error) throw error;
                     expect(response.statusCode).to.equal(200);
-                    expect(response.body.STATUS === 'SUCCESS').to.equal(true);
+                    expect(response.body._id == sampleIds.article_id).to.equal(true);
                     done();  
                 });
         });  
@@ -213,7 +213,7 @@ describe('API ROUTES', () => {
                 .end((error, response) => {
                     if (error) throw error;
                     expect(response.statusCode).to.equal(200);
-                    expect(response.body.STATUS === 'SUCCESS').to.equal(true);
+                    expect(response.body._id == sampleIds.article_id).to.equal(true);
                     done();  
                 });
         });  
