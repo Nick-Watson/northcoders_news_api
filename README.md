@@ -1,6 +1,6 @@
 ## Northcoders News API
 
-Northcoders News API is a RESTful API created in Node.js using Express.js, MongoDB and Mongoose. This is the back end of the Northcoders News application which provides the application content to the [front end](https://github.com/Nick-Watson/w06-northcoders-news/tree/remote-week) React components. The MongoDB datbase is hosted on mLabs and the API is deployed on Heroku.
+Northcoders News API is a RESTful API created in Node.js using Express.js, MongoDB and Mongoose. This is the back end of the Northcoders News application which provides the application content to the [front end](https://github.com/Nick-Watson/w06-northcoders-news/tree/remote-week) React components. The MongoDB database is hosted on mLabs and the API is deployed on Heroku.
 
 API link: [https://aqueous-forest-58725.herokuapp.com/api](https://aqueous-forest-58725.herokuapp.com/api)
 

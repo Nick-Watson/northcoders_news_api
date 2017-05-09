@@ -7,7 +7,6 @@ const seed = require('../seed/test.seed');
 const PORT = require('../config').PORT[process.env.NODE_ENV];
 const ROOT = `http://localhost:${PORT}/api`;
 
-// server 
 require('../server');
 
 let sampleIds, invalidId, incorrectId;
@@ -18,7 +17,6 @@ before(function (done) {
             seed((idsObj) => {
                 sampleIds = idsObj;
                 // also save some invalid IDs to test for errors
-                // explain the difference between an invalid/incorrect ID
                 invalidId = sampleIds.article_id.toString().split('');
                 invalidId[invalidId.length - 1] =  '5345';
                 invalidId = invalidId.join('');
