@@ -8,7 +8,6 @@ function voteArticle (req, res, next) {
         if (error) {
             return next(error);
         }
-        console.log(result);
         res.status(200).send(result);
     });
 }
