@@ -1,22 +1,54 @@
-## Northcoders News API
+# Northcoders News API
 
-Northcoders News API is a RESTful API created in Node.js using Express.js, MongoDB and Mongoose. This is the back end of the Northcoders News application which provides the application content to the [front end](https://github.com/Nick-Watson/w06-northcoders-news/tree/remote-week) React components. The MongoDB database is hosted on mLabs and the API is deployed on Heroku.
+Northcoders News API is the back-end of the Northcoders News project. This RESTful API is used to serve JSON data to the [front-end](https://github.com/Nick-Watson/w06-northcoders-news/tree/remote-week
+) React UI. The API consists of a Express.js server and requests data from a MongoDB database. The API has been deployed on Heroku which can be found at [https://aqueous-forest-58725.herokuapp.com/api](https://aqueous-forest-58725.herokuapp.com/api). The MongoDB instance is hosted on mLabs and the server connects to it through the Mongoose module. 
 
-API link: [https://aqueous-forest-58725.herokuapp.com/api](https://aqueous-forest-58725.herokuapp.com/api)
+### Prerequisites
 
-The API is tested using Mocha, Chai and Supertest. If you would like to see the tests please follow the instructions below and ensure you have Node v7.0.0 (or later) and [MongoDB](https://docs.mongodb.com/manual/administration/install-community/) installed and running.
+Please ensure you have the following installed;
 
-``````
+```
+Node.js v7.0.0 or higher
+```
+Available [here](https://nodejs.org/en/download/current/)
+
+```
+MongoDB
+```
+Available [here](https://docs.mongodb.com/manual/administration/install-community/)
+
+## Tests
+
+The API has been tested and checked to make sure it responds with the correct status codes and data. The tests were conducted using Mocha, Chai and Supertest on a local MongoDB instance. To view the tests please follow the instructions below.
+
+From the command line ensure you have MongoDB running locally;
+
+````````
+mongod
+````````
+Then in another shell window and in a directory of your choosing;
+
+````````
 git clone https://github.com/Nick-Watson/wk07sprint03_northcoders_news_api_feb2017 ncn_api
 
 cd ncn_api
 
-npm install
+npm install 
 
 npm test
-```````
 
-### Routes
+````````
+
+## Built With
+
+* [Express](https://github.com/expressjs/express) - Server framework for Node
+* [Mongoose](https://github.com/Automattic/mongoose) - MongoDB object modelling tool
+* [async](https://github.com/caolan/async) - Asynchronus proccess helper
+* [Supertest](https://github.com/visionmedia/supertest) - HTTP server testing in Node
+* [Mocha](https://mochajs.org/) - Test framework
+* [Chai](http://chaijs.com/) - Assertation library
+
+## Routes
 
 The availbale endpoints for the API are listed below;
 
@@ -62,3 +94,4 @@ e.g: /api/comments/:comment_id?vote=down
 DELETE /api/comments/:comment_id
 ```
 Deletes a comment
+
