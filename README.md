@@ -29,7 +29,7 @@ mongod
 Then in another shell window and in a directory of your choosing;
 
 ````````
-git clone https://github.com/Nick-Watson/wk07sprint03_northcoders_news_api_feb2017 northcoders_news_api
+git clone https://github.com/Nick-Watson/northcoders_news_api northcoders_news_api
 
 cd northcoders_news_api
 
