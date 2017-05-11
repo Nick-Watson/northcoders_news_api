@@ -1,6 +1,6 @@
 # Northcoders News API
 
-Northcoders News API is the back-end of the Northcoders News project. This RESTful API is used to serve JSON data to the [front-end](https://github.com/Nick-Watson/w06-northcoders-news/tree/remote-week
+Northcoders News API is the back-end of the Northcoders News project. This RESTful API is used to serve JSON data to the [front-end](https://github.com/Nick-Watson/northcoders_news_ui
 ) React UI. The API consists of a Express.js server and requests data from a MongoDB database. The API has been deployed on Heroku which can be found at [https://aqueous-forest-58725.herokuapp.com/api](https://aqueous-forest-58725.herokuapp.com/api). The MongoDB instance is hosted on mLabs and the server connects to it through the Mongoose module. 
 
 ### Prerequisites
@@ -29,9 +29,9 @@ mongod
 Then in another shell window and in a directory of your choosing;
 
 ````````
-git clone https://github.com/Nick-Watson/wk07sprint03_northcoders_news_api_feb2017 ncn_api
+git clone https://github.com/Nick-Watson/wk07sprint03_northcoders_news_api_feb2017 northcoders_news_api
 
-cd ncn_api
+cd northcoders_news_api
 
 npm install 
 
