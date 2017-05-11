@@ -16,14 +16,13 @@ before(function (done) {
             console.log('Dropped DB');
             seed((idsObj) => {
                 sampleIds = idsObj;
-                // also save some invalid IDs to test for errors
+                // save some invalid IDs to test for errors
                 invalidId = sampleIds.article_id.toString().split('');
                 invalidId[invalidId.length - 1] =  '5345';
                 invalidId = invalidId.join('');
 
                 // take an ID from another database
                 incorrectId = '5841a06fed9db244975922c3';
-                console.log(invalidId);
 
                 done();
             });
